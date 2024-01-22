@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Simulations | R Projects for Math 3080</title>
+<meta name="author" content="Alvaro Arias">
+<meta name="description" content="R is widely used for simulations due to its extensive set of statistical and mathematical functions, ease of coding, and strong support for random number generation. R’s flexibility allows...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Simulations | R Projects for Math 3080">
+<meta property="og:type" content="book">
+<meta property="og:description" content="R is widely used for simulations due to its extensive set of statistical and mathematical functions, ease of coding, and strong support for random number generation. R’s flexibility allows...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Simulations | R Projects for Math 3080">
+<meta name="twitter:description" content="R is widely used for simulations due to its extensive set of statistical and mathematical functions, ease of coding, and strong support for random number generation. R’s flexibility allows...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Projects for Math 3080</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to R and Simulations</a></li>
+<li><a class="active" href="simulations-1.html"><span class="header-section-number">2</span> Simulations</a></li>
+<li><a class="" href="hello-bookdown.html"><span class="header-section-number">3</span> Hello bookdown</a></li>
+<li><a class="" href="graphs-in-python-and-r.html"><span class="header-section-number">4</span> Graphs in Python and R</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="simulations-1" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Simulations<a class="anchor" aria-label="anchor" href="#simulations-1"><i class="fas fa-link"></i></a>
+</h1>
+<p>R is widely used for simulations due to its extensive set of statistical and mathematical functions, ease of coding, and strong support for random number generation. R’s flexibility allows researchers and analysts to implement various simulation models.</p>
+<p>In this class we will use the <strong>sample</strong> function and the <strong>replicate</strong> function extensively.</p>
+<div id="the-sample-function-1" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> The sample function<a class="anchor" aria-label="anchor" href="#the-sample-function-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function in R is used to randomly sample elements of a vector.
+The basic syntax is: for a vector <code>x</code>, <code>sample(x,size,replace=FALSE,prob=NULL)</code></p>
+<p>The functions: <em>size</em>, <em>replace</em> and <em>prob</em> are optional. If they are not included, size is the length of the vector, replace is <code>FALSE</code> and prob is <code>NULL</code>. In this case, we simply get a random percutation of the vector. For example</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2 1 3 5 6 4</span></span></code></pre></div>
+<p>The sample function can be used to simulate several experiments</p>
+<div id="getting-objects-out-of-a-box-1" class="section level3 unnumbered">
+<h3>Getting objects out of a Box<a class="anchor" aria-label="anchor" href="#getting-objects-out-of-a-box-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Suppose that we have a box with 3 red balls, 2 yellow ones and 1 green.</p>
+<ol style="list-style-type: decimal">
+<li>To select one ball from the box we write <code>sample(box,1)</code>
+</li>
+<li>To select two balls from the box we write <code>sample(box,2)</code>. Notice that this doesn’t include replacement. We either take two balls, or we take one ball and then another one.</li>
+<li>To select two balls with replacement means that we select one ball. We look at it. Put it back in the box and then select a second one at random. To do this we write <code>sample(box,2,replace=T)</code>.</li>
+</ol>
+</div>
+<div id="rolling-dice-1" class="section level3 unnumbered">
+<h3>Rolling dice<a class="anchor" aria-label="anchor" href="#rolling-dice-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>To roll a die we write <code>sample(1:6,1)</code>
+</li>
+<li>To roll two dice we write <code>sample(1:6,2,replace=FALSE)</code>. Notice that we need to add <code>replace=FALSE</code> because we can get the same number.</li>
+</ol>
+</div>
+<div id="selecting-a-birthday-at-random-1" class="section level3 unnumbered">
+<h3>Selecting a birthday at random<a class="anchor" aria-label="anchor" href="#selecting-a-birthday-at-random-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>To select a birthday at random we write <code>sample(1:365,1)</code>. We ignore leap years and assume that birthdays are described by numbers from 1 to 365. January 1st is 1. January 2nd is 2, etc.</li>
+<li>To select 10 birthdays at random, we write <code>sample(1:365,10,replace=T)</code>. Notice that we need to add the replace parameter since birthdays can be the same.</li>
+<li>If we want to select 10 <strong>different</strong> birthdays at random, we write <code>sample(1:365,10)</code>.</li>
+</ol>
+</div>
+</div>
+<div id="the-replicate-function-1" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> The Replicate Function<a class="anchor" aria-label="anchor" href="#the-replicate-function-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code><a href="https://rdrr.io/r/base/lapply.html">replicate( )</a></code> function in R is used to replicate the execution of an expression or a function multiple times. The basic syntax is <code>replicate(n,expression)</code>. For example</p>
+<ol style="list-style-type: decimal">
+<li>To roll a die 10 times we write <code>replicate(10,sample(1:10,1))</code>. We can also do this using the sample function.</li>
+<li>To select 1 balls from the box 10 times, we write <code>replicate(10,sample(box,1))</code>.</li>
+</ol>
+</div>
+<div id="finding-values-of-experiments-1" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Finding values of experiments<a class="anchor" aria-label="anchor" href="#finding-values-of-experiments-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>We combine the sample function, the replicate function and vector functions to simulate more complicated experiements. We illustrate this with this example:</p>
+<div class="example">
+<p><span id="exm:unnamed-chunk-2" class="example"><strong>Example 2.1  </strong></span>We want to roll a die 20 times and count how many 6’s we get.</p>
+</div>
+<p>First we roll a die 20 times</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fl">20</span>,replace <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="va">dice</span></span>
+<span><span class="co">#&gt;  [1] 2 5 2 5 3 2 2 4 3 6 5 5 3 2 2 1 1 2 4 2</span></span></code></pre></div>
+<p>Then we want to see how many of the rolls are 6</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dice</span> <span class="op">==</span> <span class="fl">6</span></span>
+<span><span class="co">#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></span>
+<span><span class="co">#&gt; [10]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></span>
+<span><span class="co">#&gt; [19] FALSE FALSE</span></span></code></pre></div>
+<p>R treats <code>FALSE</code> values as 0’s and <code>TRUE</code> values as 1’s. If we sum these values we find out the number of 6’s</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">dice</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="example">
+<p><span id="exm:unnamed-chunk-6" class="example"><strong>Example 2.2  </strong></span>Now we want to run the previous experiment 100 times</p>
+</div>
+<p>We use the replicate function</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fl">20</span>,replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   [1] 1 0 4 4 3 3 4 3 3 3 1 3 3 2 4 2 4 0 1 3 5 5 3 2 4 4 5</span></span>
+<span><span class="co">#&gt;  [28] 3 0 0 3 7 3 4 3 3 4 2 7 4 7 3 3 1 2 8 5 3 1 7 3 2 2 1</span></span>
+<span><span class="co">#&gt;  [55] 3 3 3 4 4 4 6 1 2 4 3 8 3 6 3 6 3 4 1 3 3 4 5 2 3 3 4</span></span>
+<span><span class="co">#&gt;  [82] 3 6 2 1 2 2 1 4 5 2 1 3 7 2 1 4 3 1 4</span></span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introduction to R and Simulations</a></div>
+<div class="next"><a href="hello-bookdown.html"><span class="header-section-number">3</span> Hello bookdown</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simulations-1"><span class="header-section-number">2</span> Simulations</a></li>
+<li>
+<a class="nav-link" href="#the-sample-function-1"><span class="header-section-number">2.1</span> The sample function</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#getting-objects-out-of-a-box-1">Getting objects out of a Box</a></li>
+<li><a class="nav-link" href="#rolling-dice-1">Rolling dice</a></li>
+<li><a class="nav-link" href="#selecting-a-birthday-at-random-1">Selecting a birthday at random</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#the-replicate-function-1"><span class="header-section-number">2.2</span> The Replicate Function</a></li>
+<li><a class="nav-link" href="#finding-values-of-experiments-1"><span class="header-section-number">2.3</span> Finding values of experiments</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Projects for Math 3080</strong>" was written by Alvaro Arias. It was last built on 2024-01-05.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

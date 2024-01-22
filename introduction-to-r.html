@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Introduction to R | R Projects for Math 3080</title>
+<meta name="author" content="Alvaro Arias">
+<meta name="description" content="We start reviewing fundamental concepts of the R language. We assume that you have downloaded and installed RStudio. Base R refers to the core functionality and built-in functions of the R...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Introduction to R | R Projects for Math 3080">
+<meta property="og:type" content="book">
+<meta property="og:description" content="We start reviewing fundamental concepts of the R language. We assume that you have downloaded and installed RStudio. Base R refers to the core functionality and built-in functions of the R...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Introduction to R | R Projects for Math 3080">
+<meta name="twitter:description" content="We start reviewing fundamental concepts of the R language. We assume that you have downloaded and installed RStudio. Base R refers to the core functionality and built-in functions of the R...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Projects for Math 3080</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">(Part) Project 1</a></li>
+<li><a class="active" href="introduction-to-r.html"><span class="header-section-number">1</span> Introduction to R</a></li>
+<li><a class="" href="simulations.html"><span class="header-section-number">2</span> Simulations</a></li>
+<li><a class="" href="project-1.html"><span class="header-section-number">3</span> Project 1</a></li>
+<li><a class="" href="part-project-2.html">(Part) Project 2</a></li>
+<li><a class="" href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></li>
+<li><a class="" href="dplyr-and-conditional-probability.html"><span class="header-section-number">5</span> DPLYR and Conditional Probability</a></li>
+<li><a class="" href="row-wise-operations.html"><span class="header-section-number">6</span> Row Wise Operations</a></li>
+<li><a class="" href="project-2.html"><span class="header-section-number">7</span> Project 2</a></li>
+<li><a class="" href="hello-bookdown.html"><span class="header-section-number">8</span> Hello bookdown</a></li>
+<li><a class="" href="graphs-in-python-and-r.html"><span class="header-section-number">9</span> Graphs in Python and R</a></li>
+</ul>
+<div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-r" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Introduction to R<a class="anchor" aria-label="anchor" href="#introduction-to-r"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#introduction-to-r"><i class="fas fa-link"></i></a>
+</h1>
+<p>We start reviewing fundamental concepts of the R language.
+We assume that you have downloaded and installed RStudio.</p>
+<p>Base R refers to the core functionality and built-in functions of the R programming language without any additional packages or libraries. It provides essential data structures (vectors, matrices, data frames, lists), control structures (loops, conditionals), and basic statistical functions.</p>
+<p>Libraries, or packages, in R are extensions that add specialized functions and capabilities beyond what’s available in base R. They are developed by the R community to address specific tasks or domains. These libraries enhance R’s functionality and make it a powerful tool for a wide range of data analysis and statistical tasks.</p>
+<div id="variables-and-data-types" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Variables and Data Types<a class="anchor" aria-label="anchor" href="#variables-and-data-types"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#variables-and-data-types"><i class="fas fa-link"></i></a>
+</h2>
+<p>In R, variables store data and are assigned using <code>&lt;-</code>. There are various types, including numeric (real or complex numbers), character (strings, written between quotes), and logical or boolean (TRUE or FALSE)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="st">"I am a string"</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "I am a string"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
+<div id="logical-operators-and-conditionals" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Logical Operators and Conditionals<a class="anchor" aria-label="anchor" href="#logical-operators-and-conditionals"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#logical-operators-and-conditionals"><i class="fas fa-link"></i></a>
+</h2>
+<p>The logical operators perform logical operations on boolean values. They include:</p>
+<ul>
+<li>AND that is represented by <span class="math inline">\(\wedge\)</span> in logic and by <code>&amp;</code> in R.</li>
+<li>OR that is represented by <span class="math inline">\(\vee\)</span> in logic and by <code>|</code> in R.</li>
+<li>NOT that is represented by <span class="math inline">\(\neg\)</span> in logic and by <code>!</code> in R.</li>
+</ul>
+<p>AND and OR are formally defined by the truth tables below. Note that AND is TRUE only when both values are true, and OR is TRUE when at least one value is true.</p>
+<div class="inline-table"><div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th><span class="math inline">\(p\)</span></th>
+<th><span class="math inline">\(q\)</span></th>
+<th><span class="math inline">\(p\wedge q\)</span></th>
+<th><span class="math inline">\(p\vee q\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>TRUE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>FALSE</td>
+<td>TRUE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>NOT is defined in the obvious way: <span class="math inline">\(\neg p\)</span> is FALSE if <span class="math inline">\(p\)</span> is TRUE and it is TRUE if <span class="math inline">\(p\)</span> is FALSE.</p>
+<p>In R, <code>==</code> is used to check if the objects are equal and <code>!=</code> is used to check if the objects aren’t equal. For example, <code>1==2</code> is FALSE and <code>1!=2</code> is TRUE. The comparison symbols <code>&lt;</code> and <code>&gt;</code> have the same meaning we use in math. Less than or equal <span class="math inline">\(\leq\)</span> is <code>&lt;=</code> and greater than or equal <span class="math inline">\(\geq\)</span> is <code>&gt;=</code>.</p>
+<p>Conditionals in R are structures that allow us to execute different blocks of code based on specified conditions. The main conditional statement is the <strong>if statement</strong>, which can be extended to an <strong>if else statement</strong> and <strong>else if clauses</strong>. They have the following syntax:</p>
+<pre><code>if (condition) {
+  # Code to execute when the condition is TRUE
+}</code></pre>
+<pre><code>if (condition) {
+  # Code to execute when the condition is TRUE
+} else {
+  # Code to execute when the condition is FALSE
+}</code></pre>
+<pre><code>if (condition1) {
+  # Code to execute when condition1 is TRUE
+} else if (condition2) {
+  # Code to execute when condition1 is FALSE and condition2 is TRUE
+} else {
+  # Code to execute when both condition1 and condition2 are FALSE
+}</code></pre>
+</div>
+<div id="functions" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+</h2>
+<p>The functions in R have the following syntax:</p>
+<pre><code>function_name &lt;- function(arg1, arg2, ...) {
+  # Code defining the function's behavior
+  return(result)
+}</code></pre>
+<p>The functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> below demonstrate simple examples. The function <span class="math inline">\(g\)</span> also illustrates the use of conditionals.</p>
+<p><span class="math display">\[f(x)=2x^2-3x-1\]</span>
+<span class="math display">\[g(x)=\begin{cases}2x+1&amp;\text{if }x&lt;0\\x^2 &amp;\text{otherwise} \end{cases}\]</span></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">result</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">x</span><span class="op">+</span><span class="fl">1</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">result</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>We can evaluate the functions.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -1</span></span>
+<span><span class="fu">g</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -3</span></span></code></pre></div>
+</div>
+<div id="vectors-and-operations" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Vectors and Operations<a class="anchor" aria-label="anchor" href="#vectors-and-operations"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#vectors-and-operations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vectors are fundamental data structures in R that provide a flexible way to work with and manipulate sequences of values.</p>
+<p>In R, vectors are one-dimensional arrays that store elements of the <em>same data type</em>. Vectors are often created using the <code><a href="https://rdrr.io/r/base/c.html">c( )</a></code> function and they can be used to represent situations, like a box with 3 red balls, 2 yellow ones and 1 green.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">numeric_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">box</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>,<span class="st">"red"</span>,<span class="st">"red"</span>,<span class="st">"yellow"</span>,<span class="st">"yellow"</span>,<span class="st">"green"</span><span class="op">)</span></span></code></pre></div>
+<p>The <strong><em>colon</em></strong> operator <code>:</code> is used to create sequences of numbers with steps of length 1 or -1. The basic syntax is <code>start:end</code>. Here are a few examples:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span><span class="fl">20</span><span class="op">:</span><span class="fl">12</span></span>
+<span><span class="co">#&gt; [1] 20 19 18 17 16 15 14 13 12</span></span>
+<span><span class="fl">3</span><span class="op">:</span><span class="fl">8</span></span>
+<span><span class="co">#&gt; [1] 3 4 5 6 7 8</span></span></code></pre></div>
+</div>
+<div id="indexing-and-subsets" class="section level2" number="1.5">
+<h2>
+<span class="header-section-number">1.5</span> Indexing and Subsets<a class="anchor" aria-label="anchor" href="#indexing-and-subsets"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#indexing-and-subsets"><i class="fas fa-link"></i></a>
+</h2>
+<p>Elements in a vector are accessed using square brackets and indices. <strong><em>Indexing starts at 1 in R,</em></strong> which is different from most programming languages, where indexing typically starts at 0.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">box</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "red"</span></span></code></pre></div>
+<p>We can also select a subset of elements using index vectors or boolean vectors.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">box</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "red"    "red"    "yellow"</span></span>
+<span><span class="va">box</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "red"    "yellow" "green"</span></span>
+<span><span class="va">numbers</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span></span>
+<span><span class="va">numbers</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">T</span>,<span class="cn">F</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 1 3 5</span></span></code></pre></div>
+</div>
+<div id="vectorized-operations" class="section level2" number="1.6">
+<h2>
+<span class="header-section-number">1.6</span> Vectorized Operations<a class="anchor" aria-label="anchor" href="#vectorized-operations"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#vectorized-operations"><i class="fas fa-link"></i></a>
+</h2>
+<p>R supports <em>vectorized operations</em>, allowing us to perform operations on entire vectors without the need for explicit loops. Recall that <code>numeric_vector &lt;- c(1,2,3,4,5)</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">numeric_vector</span><span class="op">*</span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]  -3  -6  -9 -12 -15</span></span>
+<span><span class="va">numeric_vector</span><span class="op">^</span><span class="fl">3</span></span>
+<span><span class="co">#&gt; [1]   1   8  27  64 125</span></span>
+<span><span class="va">numeric_vector</span><span class="op">+</span><span class="va">numeric_vector</span></span>
+<span><span class="co">#&gt; [1]  2  4  6  8 10</span></span></code></pre></div>
+<p>Vectorized operation also supports logical operations</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">numeric_vector</span><span class="op">&gt;</span><span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span><span class="va">box</span> <span class="op">==</span> <span class="st">"yellow"</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE  TRUE FALSE</span></span></code></pre></div>
+<p>We can combine these features to select objects satisfying certain properties</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 1.1  </strong></span>Suppose that <code>x&lt;-c(2,1,4,1,5,1,6,2)</code>. Find the elements that are larger than 2</p>
+</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 2 1 4 1 5 1 6 2</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">&gt;</span><span class="fl">2</span></span>
+<span><span class="va">y</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE</span></span>
+<span><span class="va">x</span><span class="op">[</span><span class="va">y</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 4 5 6</span></span></code></pre></div>
+<p>If we want to know the indices that have values greater than 2, we use the <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> function</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3 5 7</span></span></code></pre></div>
+<p>We can select objects using more complicated expressions that involve logical operators.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 1.2  </strong></span>Suppose that <code>x&lt;-c(2,1,4,1,5,1,6,2)</code>. Find the elements that are larger than 1 and less than 6</p>
+</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 2 1 4 1 5 1 6 2</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">x</span><span class="op">&gt;</span><span class="fl">1</span><span class="op">)</span><span class="op">&amp;</span><span class="op">(</span><span class="va">x</span><span class="op">&lt;</span><span class="fl">6</span><span class="op">)</span> <span class="co">#Recall that &amp; is the AND operator in R</span></span>
+<span><span class="va">y</span></span>
+<span><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE</span></span>
+<span><span class="va">x</span><span class="op">[</span><span class="va">y</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 2 4 5 2</span></span></code></pre></div>
+<div id="vectorize" class="section level3" number="1.6.1">
+<h3>
+<span class="header-section-number">1.6.1</span> Vectorization of functions<a class="anchor" aria-label="anchor" href="#vectorize"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#vectorize"><i class="fas fa-link"></i></a>
+</h3>
+<p>Since many built-in functions in R can be applied directly to vectors, functions like <span class="math inline">\(f(x)=2x^2-3x-1\)</span>, that only use these operations, can be applied to vectors as well</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]  4 -1 -2  1</span></span></code></pre></div>
+<p>However, this does not work with functions that have conditionals, like <span class="math inline">\(g(x)=\begin{cases}2x+1&amp;\text{if }x&lt;0\\x^2 &amp;\text{otherwise.} \end{cases}\)</span></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu">g</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in if (x &lt; 0) {: the condition has length &gt; 1 and</span></span>
+<span><span class="co">#&gt; only the first element will be used</span></span>
+<span><span class="co">#&gt; [1] -1  1  3  5</span></span></code></pre></div>
+<p>Notice that <span class="math inline">\(g\)</span> evaluated all values using <span class="math inline">\(2x+1\)</span>.</p>
+<p>R has several ways to vectorize functions like <span class="math inline">\(g\)</span>. One such solution is the <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> from base R.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">g</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -1  0  1  4</span></span></code></pre></div>
+</div>
+<div id="graphs-of-functions" class="section level3" number="1.6.2">
+<h3>
+<span class="header-section-number">1.6.2</span> Graphs of Functions<a class="anchor" aria-label="anchor" href="#graphs-of-functions"><i class="fas fa-link"></i></a>
+<a class="anchor" aria-label="anchor" href="#graphs-of-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vectorization in R simplifies the process of generating plots when creating visualizations in R.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">10</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># The optional arguments "type" and "col" allow us to change the graph</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,type<span class="op">=</span><span class="st">"l"</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="index_files/figure-html/unnamed-chunk-16-2.png" width="672"></div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">(Part) Project 1</a></div>
+<div class="next"><a href="simulations.html"><span class="header-section-number">2</span> Simulations</a></div>
+</div>
+<div class="chapter-nav">
+<div class="empty"></div>
+<div class="next"><a href="simulations.html"><span class="header-section-number">2</span> Simulations</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-r"><span class="header-section-number">1</span> Introduction to R</a></li>
+<li><a class="nav-link" href="#variables-and-data-types"><span class="header-section-number">1.1</span> Variables and Data Types</a></li>
+<li><a class="nav-link" href="#logical-operators-and-conditionals"><span class="header-section-number">1.2</span> Logical Operators and Conditionals</a></li>
+<li><a class="nav-link" href="#functions"><span class="header-section-number">1.3</span> Functions</a></li>
+<li><a class="nav-link" href="#vectors-and-operations"><span class="header-section-number">1.4</span> Vectors and Operations</a></li>
+<li><a class="nav-link" href="#indexing-and-subsets"><span class="header-section-number">1.5</span> Indexing and Subsets</a></li>
+<li>
+<a class="nav-link" href="#vectorized-operations"><span class="header-section-number">1.6</span> Vectorized Operations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#vectorize"><span class="header-section-number">1.6.1</span> Vectorization of functions</a></li>
+<li><a class="nav-link" href="#graphs-of-functions"><span class="header-section-number">1.6.2</span> Graphs of Functions</a></li>
+</ul>
+</li>
+</ul>
+<div class="book-extra">
+        <ul class="list-unstyled"></ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Projects for Math 3080</strong>" was written by Alvaro Arias. It was last built on 2024-01-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Introduction to Data Frame | R Projects for Math 3080</title>
+<meta name="author" content="Alvaro Arias">
+<meta name="description" content="4.1 Data Frames Data frames in R are two-dimensional data structures, similar to spreadsheets. They are used to store and manipulate datasets. The key points are: Structure: A data frame is a...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Introduction to Data Frame | R Projects for Math 3080">
+<meta property="og:type" content="book">
+<meta property="og:description" content="4.1 Data Frames Data frames in R are two-dimensional data structures, similar to spreadsheets. They are used to store and manipulate datasets. The key points are: Structure: A data frame is a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Introduction to Data Frame | R Projects for Math 3080">
+<meta name="twitter:description" content="4.1 Data Frames Data frames in R are two-dimensional data structures, similar to spreadsheets. They are used to store and manipulate datasets. The key points are: Structure: A data frame is a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Projects for Math 3080</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to R</a></li>
+<li><a class="" href="simulations.html"><span class="header-section-number">2</span> Simulations</a></li>
+<li><a class="" href="project-1.html"><span class="header-section-number">3</span> Project 1</a></li>
+<li><a class="active" href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></li>
+<li><a class="" href="dplyr-and-conditional-probability.html"><span class="header-section-number">5</span> DPLYR and Conditional Probability</a></li>
+<li><a class="" href="row-wise-operations.html"><span class="header-section-number">6</span> Row Wise Operations</a></li>
+<li><a class="" href="project-2.html"><span class="header-section-number">7</span> Project 2</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-data-frame" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Introduction to Data Frame<a class="anchor" aria-label="anchor" href="#introduction-to-data-frame"><i class="fas fa-link"></i></a>
+</h1>
+<div id="data-frames" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Data Frames<a class="anchor" aria-label="anchor" href="#data-frames"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data frames in R are two-dimensional data structures, similar to spreadsheets. They are used to store and manipulate datasets. The key points are:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Structure</em>: A data frame is a collection of vectors of equal length, where each vector represents a column. Recall that all the elements of a vectors have the same type.</p></li>
+<li><p><em>Columns</em>: Different columns can have different data types (numeric, character, factor, etc.).</p></li>
+<li><p><em>Rows</em>: Each row corresponds to a separate observation or record in the dataset.</p></li>
+</ol>
+<div id="creating-data-frames" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Creating Data Frames<a class="anchor" aria-label="anchor" href="#creating-data-frames"><i class="fas fa-link"></i></a>
+</h3>
+<p>Data frames are created using the <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> function or by importing data sources.</p>
+<p>One option is to define the column vectors and to combine them into a data frame using the <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> function as shown in this example:</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">name</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John Smith"</span>,<span class="st">"Jane Doe"</span>, <span class="st">"Mary Johnson"</span><span class="op">)</span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NaN</span>,<span class="fl">16</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">b</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">11</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">name</span>,<span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">df1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="right">a</th>
+<th align="right">b</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">John Smith</td>
+<td align="right">NaN</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Jane Doe</td>
+<td align="right">16</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">Mary Johnson</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>We used the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code> function to have a nicer display.</p>
+<p>Data frames can also be defined inside the data.frame() function directly, naming the columns and the values.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John Smith"</span>,<span class="st">"Jane Doe"</span>,<span class="st">"Mary Johnson"</span>,<span class="st">"John Smith"</span>,<span class="st">"Jane Doe"</span>,<span class="st">"Mary Johnson"</span><span class="op">)</span>,</span>
+<span>  treatment <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"a"</span>,<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"b"</span>,<span class="st">"b"</span><span class="op">)</span>,</span>
+<span>  results <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NaN</span>,<span class="fl">16</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">11</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">name</th>
+<th align="left">treatment</th>
+<th align="right">results</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">John Smith</td>
+<td align="left">a</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Jane Doe</td>
+<td align="left">a</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="left">Mary Johnson</td>
+<td align="left">a</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">John Smith</td>
+<td align="left">b</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Jane Doe</td>
+<td align="left">b</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">Mary Johnson</td>
+<td align="left">b</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notice that the data frames df1 and df2 have the same information. We will later learn that df2 is preferred over df1. We will learn how to convert a data frame like df1 into a data frame like df2. df2 has a “tidy” format that fits specially well with many libraries of R.</p>
+</div>
+<div id="importing-data-sets-from-r-head-and-tail" class="section level3 unnumbered">
+<h3>Importing data sets from R, head(), and tail()<a class="anchor" aria-label="anchor" href="#importing-data-sets-from-r-head-and-tail"><i class="fas fa-link"></i></a>
+</h3>
+<p>R has several data sets that can be imported using the <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> function. If you write data() inside an R block and run it, you will see a list of all data sets.</p>
+<p>For illustration, we will import the iris data set that has 150 rows. We will use the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function to see only the first 6 rows. The <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> function is similar, but it shows the last 6 rows by default.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+</div>
+<div id="extracting-columns-from-a-data-frame" class="section level3 unnumbered">
+<h3>Extracting columns from a data frame<a class="anchor" aria-label="anchor" href="#extracting-columns-from-a-data-frame"><i class="fas fa-link"></i></a>
+</h3>
+<p>The syntax to extract columns is data_frame$column_name. Recall that the columns of a data frame are vectors.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span></span>
+<span><span class="co">#&gt;   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8</span></span>
+<span><span class="co">#&gt;  [14] 4.3 5.8 5.7 5.4 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0</span></span>
+<span><span class="co">#&gt;  [27] 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0 5.5 4.9 4.4</span></span>
+<span><span class="co">#&gt;  [40] 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4</span></span>
+<span><span class="co">#&gt;  [53] 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6</span></span>
+<span><span class="co">#&gt;  [66] 6.7 5.6 5.8 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7</span></span>
+<span><span class="co">#&gt;  [79] 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5 5.5</span></span>
+<span><span class="co">#&gt;  [92] 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3</span></span>
+<span><span class="co">#&gt; [105] 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5</span></span>
+<span><span class="co">#&gt; [118] 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2</span></span>
+<span><span class="co">#&gt; [131] 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8</span></span>
+<span><span class="co">#&gt; [144] 6.8 6.7 6.7 6.3 6.5 6.2 5.9</span></span></code></pre></div>
+</div>
+<div id="some-data-frame-functions" class="section level3 unnumbered">
+<h3>Some Data Frame Functions<a class="anchor" aria-label="anchor" href="#some-data-frame-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>The following is a list of some of the most useful data frame functions. In the next section we will import the library dplyr. This library handles functions 9-14 in a nicer way.</p>
+<ol style="list-style-type: decimal">
+<li>head(): Displays the first few rows of a data frame.</li>
+<li>tail(): Displays the last few rows of a data frame.</li>
+<li>str(): Shows the structure of a data frame.</li>
+<li>summary(): Provides summary statistics for each column.</li>
+<li>nrow(): Returns the number of rows in a data frame.</li>
+<li>ncol(): Returns the number of columns in a data frame.</li>
+<li>colnames(): Returns or sets the column names.</li>
+<li>rownames(): Returns or sets the row names.</li>
+<li>subset(): Subsets a data frame based on conditions.
+subset(df, condition)</li>
+<li>select(): Chooses specific columns.
+select(df, column1, column2)</li>
+<li>filter(): Filters rows based on conditions.
+filter(df, condition)</li>
+<li>mutate(): Adds new variables or modifies existing ones.
+mutate(df, new_column = expression)</li>
+<li>arrange(): Sorts rows based on one or more columns.
+arrange(df, column1, column2)</li>
+<li>merge(): Combines two data frames by common columns.
+merge(df1, df2, by = “common_column”)</li>
+</ol>
+<p>We will illustrate some of these functions with the data frame iris.</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co">#str shows the structure of the data set.</span></span>
+<span><span class="co">#&gt; 'data.frame':    150 obs. of  5 variables:</span></span>
+<span><span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
+<span><span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
+<span><span class="co">#&gt;  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># summary provides summary statistical for each column.</span></span>
+<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
+<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
+<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
+<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
+<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
+<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
+<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
+<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
+<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
+<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># nrwon finds the number of rows</span></span>
+<span><span class="co">#&gt; [1] 150</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># colnames finds the names of the columns</span></span>
+<span><span class="co">#&gt; [1] "Sepal.Length" "Sepal.Width"  "Petal.Length"</span></span>
+<span><span class="co">#&gt; [4] "Petal.Width"  "Species"</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="project-1.html"><span class="header-section-number">3</span> Project 1</a></div>
+<div class="next"><a href="dplyr-and-conditional-probability.html"><span class="header-section-number">5</span> DPLYR and Conditional Probability</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-data-frame"><span class="header-section-number">4</span> Introduction to Data Frame</a></li>
+<li>
+<a class="nav-link" href="#data-frames"><span class="header-section-number">4.1</span> Data Frames</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#creating-data-frames"><span class="header-section-number">4.1.1</span> Creating Data Frames</a></li>
+<li><a class="nav-link" href="#importing-data-sets-from-r-head-and-tail">Importing data sets from R, head(), and tail()</a></li>
+<li><a class="nav-link" href="#extracting-columns-from-a-data-frame">Extracting columns from a data frame</a></li>
+<li><a class="nav-link" href="#some-data-frame-functions">Some Data Frame Functions</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Projects for Math 3080</strong>" was written by Alvaro Arias. It was last built on 2024-01-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

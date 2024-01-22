@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 DPLYR | R Projects for Math 3080</title>
+<meta name="author" content="Alvaro Arias">
+<meta name="description" content="library(dplyr) #&gt; Warning: package 'dplyr' was built under R version 4.1.3 #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 5 DPLYR | R Projects for Math 3080">
+<meta property="og:type" content="book">
+<meta property="og:description" content="library(dplyr) #&gt; Warning: package 'dplyr' was built under R version 4.1.3 #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 DPLYR | R Projects for Math 3080">
+<meta name="twitter:description" content="library(dplyr) #&gt; Warning: package 'dplyr' was built under R version 4.1.3 #&gt; #&gt; Attaching package: 'dplyr' #&gt; The following objects are masked from 'package:stats': #&gt; #&gt;   filter, lag #&gt; The...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Projects for Math 3080</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to R</a></li>
+<li><a class="" href="simulations.html"><span class="header-section-number">2</span> Simulations</a></li>
+<li><a class="" href="project-1.html"><span class="header-section-number">3</span> Project 1</a></li>
+<li><a class="" href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></li>
+<li><a class="active" href="dplyr.html"><span class="header-section-number">5</span> DPLYR</a></li>
+<li><a class="" href="hello-bookdown.html"><span class="header-section-number">6</span> Hello bookdown</a></li>
+<li><a class="" href="graphs-in-python-and-r.html"><span class="header-section-number">7</span> Graphs in Python and R</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dplyr" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> DPLYR<a class="anchor" aria-label="anchor" href="#dplyr"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.1.3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<p>dplyr is a popular R library used to manipulate data consistently and efficiently. It uses a set of functions, that they call “verbs”, that are used to solve most common data manipulation problems. The main verbs are:</p>
+<ul>
+<li>
+<em>mutate</em> to create new columns. The syntax is</li>
+</ul>
+<pre><code>mutate(data_frame, new_column_name = expression)</code></pre>
+<ul>
+<li>
+<em>filter</em> to select rows. The syntax is</li>
+</ul>
+<pre><code>filter(data_frame,condition)</code></pre>
+<ul>
+<li>
+<em>select</em> to select columns. The syntax is</li>
+</ul>
+<pre><code>select(data_frame, column1,column2,...,columnk)</code></pre>
+<ul>
+<li>
+<em>arrange</em> reorders the rows. The syntax is</li>
+</ul>
+<pre><code>arange(data_frame,column1,columns2,...)</code></pre>
+<p>These functions are combined with group_by() and summarise() to perform operation “by group”. Moreover, dplyr uses <strong><em>piping</em></strong> to readability.</p>
+<div id="conditional-probability---dice" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Conditional Probability - dice<a class="anchor" aria-label="anchor" href="#conditional-probability---dice"><i class="fas fa-link"></i></a>
+</h2>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 5.1  </strong></span>You roll two dice. Estimate the conditional probability that the first die is 6 if the sum is 10</p>
+</div>
+<p>Step 1: Select a large number of simulations and generate the dice data.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
+<span><span class="va">die1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="va">n</span>,replace <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="va">die2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="va">n</span>,replace <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<p>Step 2: Make the data into a dataframe.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">die1</span>,<span class="va">die2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   die1 die2</span></span>
+<span><span class="co">#&gt; 1    5    4</span></span>
+<span><span class="co">#&gt; 2    1    3</span></span>
+<span><span class="co">#&gt; 3    3    2</span></span>
+<span><span class="co">#&gt; 4    2    1</span></span>
+<span><span class="co">#&gt; 5    3    6</span></span>
+<span><span class="co">#&gt; 6    3    6</span></span></code></pre></div>
+<p>Step 3: Use mutate to create a new column that includes the sum.</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dfm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">df</span>,sum <span class="op">=</span> <span class="va">die1</span><span class="op">+</span><span class="va">die2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dfm</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   die1 die2 sum</span></span>
+<span><span class="co">#&gt; 1    5    4   9</span></span>
+<span><span class="co">#&gt; 2    1    3   4</span></span>
+<span><span class="co">#&gt; 3    3    2   5</span></span>
+<span><span class="co">#&gt; 4    2    1   3</span></span>
+<span><span class="co">#&gt; 5    3    6   9</span></span>
+<span><span class="co">#&gt; 6    3    6   9</span></span></code></pre></div>
+<p>Step 4: Select the rows that add up to ten. This is the key point of conditional probability.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dfm</span>,<span class="va">sum</span> <span class="op">==</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dff</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   die1 die2 sum</span></span>
+<span><span class="co">#&gt; 1    4    6  10</span></span>
+<span><span class="co">#&gt; 2    4    6  10</span></span>
+<span><span class="co">#&gt; 3    6    4  10</span></span>
+<span><span class="co">#&gt; 4    5    5  10</span></span>
+<span><span class="co">#&gt; 5    4    6  10</span></span>
+<span><span class="co">#&gt; 6    5    5  10</span></span></code></pre></div>
+<p>Step 5: Extract the column that has the first die, and find the proportion of sixes.</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dff</span><span class="op">$</span><span class="va">die1</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3436754</span></span>
+<span><span class="fl">1</span><span class="op">/</span><span class="fl">6</span></span>
+<span><span class="co">#&gt; [1] 0.1666667</span></span></code></pre></div>
+</div>
+<div id="the-pipe-operator-in-dplyr" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> The Pipe Operator in DPLYR<a class="anchor" aria-label="anchor" href="#the-pipe-operator-in-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+<p>Saving dataframes and performing new operations is annoying.We can do them all at once.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sum <span class="op">=</span> <span class="va">die1</span><span class="op">+</span><span class="va">die2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sum</span> <span class="op">==</span> <span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>check <span class="op">=</span> <span class="va">die1</span><span class="op">==</span><span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       die1       die2        sum      check </span></span>
+<span><span class="co">#&gt;  5.0178998  4.9821002 10.0000000  0.3436754</span></span></code></pre></div>
+</div>
+<div id="conditional-probability---testfor-disease" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Conditional Probability - testfor disease<a class="anchor" aria-label="anchor" href="#conditional-probability---testfor-disease"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">value</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">1</span>,prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.9</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">value</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">1</span>,prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.95</span>,<span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100000</span></span>
+<span><span class="va">disease</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,<span class="va">n</span>,replace <span class="op">=</span> <span class="cn">T</span>,prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.99</span>,<span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">disease</span>, <span class="va">test</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">disease</span>,<span class="va">results</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   disease results</span></span>
+<span><span class="co">#&gt; 1       0       0</span></span>
+<span><span class="co">#&gt; 2       0       0</span></span>
+<span><span class="co">#&gt; 3       0       0</span></span>
+<span><span class="co">#&gt; 4       0       0</span></span>
+<span><span class="co">#&gt; 5       0       0</span></span>
+<span><span class="co">#&gt; 6       0       0</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">positive</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df</span>,<span class="va">results</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">positive</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   disease results</span></span>
+<span><span class="co">#&gt; 1       0       1</span></span>
+<span><span class="co">#&gt; 2       0       1</span></span>
+<span><span class="co">#&gt; 3       0       1</span></span>
+<span><span class="co">#&gt; 4       0       1</span></span>
+<span><span class="co">#&gt; 5       0       1</span></span>
+<span><span class="co">#&gt; 6       1       1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">positive</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 5931    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">positive</span><span class="op">$</span><span class="va">disease</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;    0    1 </span></span>
+<span><span class="co">#&gt; 5021  910</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">positive</span><span class="op">$</span><span class="va">disease</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="dplyr_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></div>
+<div class="next"><a href="hello-bookdown.html"><span class="header-section-number">6</span> Hello bookdown</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dplyr"><span class="header-section-number">5</span> DPLYR</a></li>
+<li><a class="nav-link" href="#conditional-probability---dice"><span class="header-section-number">5.1</span> Conditional Probability - dice</a></li>
+<li><a class="nav-link" href="#the-pipe-operator-in-dplyr"><span class="header-section-number">5.2</span> The Pipe Operator in DPLYR</a></li>
+<li><a class="nav-link" href="#conditional-probability---testfor-disease"><span class="header-section-number">5.3</span> Conditional Probability - testfor disease</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Projects for Math 3080</strong>" was written by Alvaro Arias. It was last built on 2024-01-09.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

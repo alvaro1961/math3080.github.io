@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Project 1 | R Projects for Math 3080</title>
+<meta name="author" content="Alvaro Arias">
+<meta name="description" content="Use R to simulate the following: Roll a dice 4 times and find the sum Select 4 different numbers between 1 and 100. Find the maximum value, the minimum value, and the difference. Roll 3 dice 100...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Project 1 | R Projects for Math 3080">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Use R to simulate the following: Roll a dice 4 times and find the sum Select 4 different numbers between 1 and 100. Find the maximum value, the minimum value, and the difference. Roll 3 dice 100...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Project 1 | R Projects for Math 3080">
+<meta name="twitter:description" content="Use R to simulate the following: Roll a dice 4 times and find the sum Select 4 different numbers between 1 and 100. Find the maximum value, the minimum value, and the difference. Roll 3 dice 100...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Projects for Math 3080</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Introduction to R</a></li>
+<li><a class="" href="simulations.html"><span class="header-section-number">2</span> Simulations</a></li>
+<li><a class="active" href="project-1.html"><span class="header-section-number">3</span> Project 1</a></li>
+<li><a class="" href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></li>
+<li><a class="" href="dplyr-and-conditional-probability.html"><span class="header-section-number">5</span> DPLYR and Conditional Probability</a></li>
+<li><a class="" href="row-wise-operations.html"><span class="header-section-number">6</span> Row Wise Operations</a></li>
+<li><a class="" href="project-2.html"><span class="header-section-number">7</span> Project 2</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="project-1" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Project 1<a class="anchor" aria-label="anchor" href="#project-1"><i class="fas fa-link"></i></a>
+</h1>
+<p>Use R to simulate the following:</p>
+<ol style="list-style-type: decimal">
+<li>Roll a dice 4 times and find the sum</li>
+<li>Select 4 different numbers between 1 and 100. Find the maximum value, the minimum value, and the difference.</li>
+<li>Roll 3 dice 100 times. Find how many times the sum of the dice is at least 10.</li>
+<li>Permute the letters of the word SIMULATE 100 times and find out how many times the first letter is an S and the last letter is an E. That is, we are looking for words of the form S******E.</li>
+<li>Repeat the previous problem but find out how many times the first letter is a vowel.</li>
+<li>A box has 4 red balls and 6 blue balls. Select 5 balls 10000 times and find out how many times we get exactly 3 red balls.</li>
+<li>In a popular carnival game, players roll three dice. If at least one of them is a 6, they win $1; otherwise, they lose $1. They argue that this is a fair game. Each die has a 1/6 chance of being a 6, and the probability of having at least one 6 in three dice rolls is 1/6 + 1/6 + 1/6 = 1/2. Simulate the game in R. Play it 1000 times and find out how much money you won or lost.</li>
+</ol>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="simulations.html"><span class="header-section-number">2</span> Simulations</a></div>
+<div class="next"><a href="introduction-to-data-frame.html"><span class="header-section-number">4</span> Introduction to Data Frame</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#project-1"><span class="header-section-number">3</span> Project 1</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Projects for Math 3080</strong>" was written by Alvaro Arias. It was last built on 2024-01-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
